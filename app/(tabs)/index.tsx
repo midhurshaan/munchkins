@@ -1,14 +1,30 @@
-import { StyleSheet } from 'react-native';
+import { Dimensions, StyleSheet, TouchableOpacity } from "react-native";
+import { Text, View } from "@/components/Themed";
+import { useState } from "react";
 
-import EditScreenInfo from '@/components/EditScreenInfo';
-import { Text, View } from '@/components/Themed';
+const { width, height } = Dimensions.get("window");
 
 export default function TabOneScreen() {
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/index.tsx" />
+      <View style={styles.titleContainer}>
+        <Text style={styles.title}>Welcome User!</Text>
+      </View>
+      <View style={styles.summaryView}>
+        <View style={styles.outerRing}>
+          <Text style={styles.text}>53 points</Text>
+        </View>
+        <View>
+          <Text style={styles.pointsInfo}>+ 20 from vegetables</Text>
+          <Text style={styles.pointsInfo}>+ 23 from fruits</Text>
+          <Text style={styles.pointsInfo}>+ 10 from protein</Text>
+        </View>
+      </View>
+      
+      {/* <TouchableOpacity onPress={signIn}>
+        <Text>Login</Text>
+      </TouchableOpacity> */}
     </View>
   );
 }
@@ -16,16 +32,61 @@ export default function TabOneScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    // justifyContent: 'center',
+    backgroundColor: "#E2E2E2",
+    // backgroundColor: "blue",
+  },
+  titleContainer: {
+    width: width * 0.9,
+    marginTop: 10,
+    backgroundColor: "transparent",
   },
   title: {
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: "bold",
+    paddingTop: 10,
+    paddingBottom: 10,
   },
   separator: {
     marginVertical: 30,
     height: 1,
-    width: '80%',
+    width: "80%",
   },
+  summaryView: {
+    backgroundColor: "white",
+    shadowColor: "#000",
+    width: width * 0.9,
+    height: height * 0.3,
+    borderRadius: 20,
+    padding: 20,
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+  },
+
+  outerRing: {
+    width: 130,
+    height: 130,
+    borderRadius: 70,
+    borderWidth: 8,
+    borderColor: "#654597", 
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "white",
+    shadowColor: "#000",
+    shadowOpacity: 0.2,
+    shadowOffset: { width: 0, height: 4 },
+    shadowRadius: 6,
+    elevation: 5,
+  },
+  text: {
+    fontSize: 24,
+    fontWeight: "bold",
+    color: "#654597",
+  },
+  pointsInfo: {
+    fontSize: 15,
+    fontWeight: "bold",
+  }
 });
