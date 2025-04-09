@@ -20,7 +20,7 @@ const Statistics: React.FC<StatisticsProps> = ({ navigation }) => {
     { day: "Tu", rate: 100 },
     { day: "We", rate: 90 },
     { day: "Th", rate: 100 },
-    { day: "Fr", rate: 85 },
+    { day: "Fr", rate: 90 },
     { day: "Sa", rate: 100 },
     { day: "Su", rate: 90 },
   ];
@@ -66,7 +66,7 @@ const Statistics: React.FC<StatisticsProps> = ({ navigation }) => {
           </View>
           <View style={styles.streakRightSection}>
             <Text style={styles.streakMessage}>
-              You've been eating beeter this month! Keep up the great work!
+              You've been eating better this month! Keep up the great work!
             </Text>
           </View>
         </View>
