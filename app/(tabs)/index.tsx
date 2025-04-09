@@ -21,10 +21,6 @@ export default function TabOneScreen() {
           <Text style={styles.pointsInfo}>+ 10 from protein</Text>
         </View>
       </View>
-      
-      {/* <TouchableOpacity onPress={signIn}>
-        <Text>Login</Text>
-      </TouchableOpacity> */}
     </View>
   );
 }
@@ -33,9 +29,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    // justifyContent: 'center',
     backgroundColor: "#E2E2E2",
-    // backgroundColor: "blue",
   },
   titleContainer: {
     width: width * 0.9,
