@@ -1,5 +1,5 @@
 # Munchkins
 ## Members
-Midhurshaan Nadarajah (40245613)
-Oviya Sinnathamby
+Midhurshaan Nadarajah (40245613) <br>
+Oviya Sinnathamby <br>
 Annabel Zecchel
