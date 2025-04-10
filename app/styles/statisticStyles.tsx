@@ -41,7 +41,7 @@ const statisticStyles = StyleSheet.create({
   },
   chartContainer: {
     flexDirection: "row",
-    height: 125,
+    height: 175,
     marginTop: 10,
     position: "relative",
   },
@@ -81,30 +81,6 @@ const statisticStyles = StyleSheet.create({
     justifyContent: "space-around",
     alignItems: "flex-end",
     paddingTop: 0,
-  },
-  barContainer: {
-    alignItems: "center",
-    width: 30,
-  },
-  bar: {
-    width: 20,
-    backgroundColor: "#654597",
-    borderTopLeftRadius: 3,
-    borderTopRightRadius: 3,
-  },
-  barLabel: {
-    marginTop: 5,
-    fontSize: 12,
-  },
-  yAxisLabels: {
-    width: 30,
-    justifyContent: "space-between",
-    paddingBottom: 15,
-  },
-  yAxisLabel: {
-    fontSize: 12,
-    color: "#888",
-    textAlign: "right",
   },
   streakContainer: {
     backgroundColor: "white",

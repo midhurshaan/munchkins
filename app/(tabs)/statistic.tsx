@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import statisticStyles from "../styles/statisticStyles";
+import { BarChart } from "react-native-gifted-charts";
 
 interface StatisticsProps {
   navigation?: any;
@@ -15,16 +16,16 @@ interface StatisticsProps {
 
 const Statistics: React.FC<StatisticsProps> = ({ navigation }) => {
   const weekdayData = [
-    { day: "Mo", rate: 95 },
-    { day: "Tu", rate: 100 },
-    { day: "We", rate: 90 },
-    { day: "Th", rate: 100 },
-    { day: "Fr", rate: 90 },
-    { day: "Sa", rate: 100 },
-    { day: "Su", rate: 90 },
+    { value: 95, label: "Mo", frontColor: '#654597' },
+    { value: 70, label: "Tu", frontColor: '#654597' },
+    { value: 60, label: "We", frontColor: '#654597'},
+    { value: 75, label: "Th", frontColor: '#654597' },
+    { value: 100, label: "Fr", frontColor: '#654597'},
+    { value: 82, label: "Sa", frontColor: '#654597' },
+    { value: 93, label: "Su", frontColor: '#654597'},
   ];
 
-  const streakDays = 34;
+  const streakDays = 4;
 
   return (
     <SafeAreaView style={statisticStyles.container}>
@@ -39,24 +40,9 @@ const Statistics: React.FC<StatisticsProps> = ({ navigation }) => {
         <View style={statisticStyles.sectionContainer}>
           <Text style={statisticStyles.sectionTitle}>Adherence Rate (%)</Text>
           <View style={statisticStyles.chartContainer}>
-            <View style={statisticStyles.gridLinesContainer}>
-              <View style={statisticStyles.gridLine100} />
-              <View style={statisticStyles.gridLine50} />
-              <View style={statisticStyles.gridLine0} />
-            </View>
 
             <View style={statisticStyles.barChartContainer}>
-              {weekdayData.map((item, index) => (
-                <View key={index} style={statisticStyles.barContainer}>
-                  <View style={[statisticStyles.bar, { height: item.rate }]} />
-                  <Text style={statisticStyles.barLabel}>{item.day}</Text>
-                </View>
-              ))}
-            </View>
-            <View style={statisticStyles.yAxisLabels}>
-              <Text style={statisticStyles.yAxisLabel}>100</Text>
-              <Text style={statisticStyles.yAxisLabel}>50</Text>
-              <Text style={statisticStyles.yAxisLabel}>0</Text>
+              <BarChart data={weekdayData} width={300} height={150} barBorderTopLeftRadius={6} barBorderTopRightRadius={6} maxValue={100} stepValue={50} noOfSections={2} spacing={12} />
             </View>
           </View>
         </View>
