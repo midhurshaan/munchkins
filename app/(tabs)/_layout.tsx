@@ -39,11 +39,11 @@ export default function TabLayout() {
               <Pressable>
                 {({ pressed }) => (
                   <Image
-                    source={require("../../assets/images/munchie.png")}
+                    source={require("../../assets/images/info.png")}
                     style={[
                       {
-                        width: 40,
-                        height: 40,
+                        width: 35,
+                        height: 35,
                         marginRight: 20,
                         marginBottom: -10,
                         opacity: pressed ? 0.5 : 1,
