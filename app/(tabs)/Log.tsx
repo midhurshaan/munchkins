@@ -17,7 +17,7 @@ interface Task {
   completed: boolean;
   category: string;
   serving: number;
-  completedServings:number;
+  completedServings: number;
 }
 
 const HealthGoalsLog: React.FC = () => {
@@ -28,16 +28,15 @@ const HealthGoalsLog: React.FC = () => {
       completed: true,
       category: "Nutrition",
       serving: 3,
-      completedServings:3,
-
+      completedServings: 3,
     },
     {
       id: "2",
       title: "Eat 3 servings of vegetables",
       completed: true,
       category: "Nutrition",
-      serving:3,
-      completedServings:2,
+      serving: 3,
+      completedServings: 2,
     },
     {
       id: "3",
@@ -45,8 +44,8 @@ const HealthGoalsLog: React.FC = () => {
       completed: false,
       category: "Hydration",
       serving: 8,
-      completedServings:4,
-    }
+      completedServings: 4,
+    },
   ]);
 
   const [modalVisible, setModalVisible] = useState(false);
@@ -56,54 +55,60 @@ const HealthGoalsLog: React.FC = () => {
   const [completedCount, setCompletedCount] = useState(0);
 
   const currentDate = new Date();
-  const options: Intl.DateTimeFormatOptions = { 
-    weekday: 'long', 
-    year: 'numeric', 
-    month: 'long', 
-    day: 'numeric' 
+  const options: Intl.DateTimeFormatOptions = {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
   };
-  const formattedDate = currentDate.toLocaleDateString('en-US', options);
+  const formattedDate = currentDate.toLocaleDateString("en-US", options);
 
   useEffect(() => {
-    const completed = tasks.filter(task => task.completed).length;
+    const completed = tasks.filter((task) => task.completed).length;
     setCompletedCount(completed);
   }, [tasks]);
 
   const toggleTaskCompletion = (id: string) => {
     setTasks(
-      tasks.map(task =>
-        task.id === id ? { ...task, completed: !task.completed, completedServings:task.completed ? 0: task.serving} : task
+      tasks.map((task) =>
+        task.id === id
+          ? {
+              ...task,
+              completed: !task.completed,
+              completedServings: task.completed ? 0 : task.serving,
+            }
+          : task
       )
     );
   };
 
-  const toggleServing= (taskId:String,servingIndex: number)=>{
-    setTasks(tasks.map(task => {
-      if (task.id === taskId){
-        let newCompletedServings =0;
+  const toggleServing = (taskId: String, servingIndex: number) => {
+    setTasks(
+      tasks.map((task) => {
+        if (task.id === taskId) {
+          let newCompletedServings = 0;
 
-        if (servingIndex< task.completedServings){
-          newCompletedServings=servingIndex;
-        }else{
-          newCompletedServings=servingIndex+1;
-        }
+          if (servingIndex < task.completedServings) {
+            newCompletedServings = servingIndex;
+          } else {
+            newCompletedServings = servingIndex + 1;
+          }
           const allComplete = newCompletedServings === task.serving;
 
           return {
             ...task,
-            completedServings:newCompletedServings,
-            completed: allComplete
+            completedServings: newCompletedServings,
+            completed: allComplete,
           };
-      }
-      return task;
-    }
-    )
+        }
+        return task;
+      })
     );
   };
 
   const addTask = () => {
     if (newTaskTitle.trim() === "") return;
-    
+
     const servingsNumber = parseInt(newServings) || 1;
 
     const newTask: Task = {
@@ -112,10 +117,9 @@ const HealthGoalsLog: React.FC = () => {
       completed: false,
       category: newTaskCategory,
       serving: servingsNumber,
-      completedServings:0,
-
+      completedServings: 0,
     };
-    
+
     setTasks([...tasks, newTask]);
     setNewTaskTitle("");
     setServings("1");
@@ -123,12 +127,12 @@ const HealthGoalsLog: React.FC = () => {
   };
 
   const deleteTask = (id: string) => {
-    setTasks(tasks.filter(task => task.id !== id));
+    setTasks(tasks.filter((task) => task.id !== id));
   };
 
   const categoryColors: Record<string, string> = {
-    "Nutrition": "#E640AB", 
-    "Hydration": "#372FE5"
+    Nutrition: "#E640AB",
+    Hydration: "#372FE5",
   };
 
   const getCategoryBadgeStyle = (category: string) => {
@@ -137,33 +141,28 @@ const HealthGoalsLog: React.FC = () => {
     };
   };
 
-  const servingBubbles= (task: Task) => {
+  const servingBubbles = (task: Task) => {
     const bubbles = [];
 
-    for (let i=0; i< task.serving ; i++){
+    for (let i = 0; i < task.serving; i++) {
       const isCompleted = i < task.completedServings;
 
-        bubbles.push(
+      bubbles.push(
         <TouchableOpacity
-        key={`${task.id}-serving-${i}`}
-        style = {[
-          styles.servingBubbles,
-          isCompleted && styles.completedServings
-        ]}
-        onPress={() => toggleServing(task.id,i)}
+          key={`${task.id}-serving-${i}`}
+          style={[
+            styles.servingBubbles,
+            isCompleted && styles.completedServings,
+          ]}
+          onPress={() => toggleServing(task.id, i)}
         />
       );
     }
-    return (
-      <View style = {styles.servingBubbleContainer}>
-        {bubbles}
-      </View>
-    )
+    return <View style={styles.servingBubbleContainer}>{bubbles}</View>;
   };
 
   return (
     <SafeAreaView style={styles.container}>
-
       <View style={styles.dateContainer}>
         <Text style={styles.dateText}>{formattedDate}</Text>
         <Text style={styles.taskCount}>
@@ -172,13 +171,10 @@ const HealthGoalsLog: React.FC = () => {
       </View>
 
       <ScrollView style={styles.scrollContainer}>
-        {tasks.map(task => (
-          <View 
-            key={task.id} 
-            style={[
-              styles.taskCard, 
-              task.completed && styles.completedTask
-            ]}
+        {tasks.map((task) => (
+          <View
+            key={task.id}
+            style={[styles.taskCard, task.completed && styles.completedTask]}
           >
             <TouchableOpacity
               style={styles.checkboxContainer}
@@ -190,28 +186,32 @@ const HealthGoalsLog: React.FC = () => {
                 )}
               </View>
             </TouchableOpacity>
-            
+
             <View style={styles.taskContent}>
-              <Text 
+              <Text
                 style={[
-                  styles.taskTitle, 
-                  task.completed && styles.completedTaskText
+                  styles.taskTitle,
+                  task.completed && styles.completedTaskText,
                 ]}
               >
                 {task.title}
               </Text>
-              
-                <View style ={styles.taskDetails}>
 
-                  <View style={[styles.categoryBadge, getCategoryBadgeStyle(task.category)]}>
-                    <Text style={styles.categoryText}>{task.category}</Text>
-                  </View>
-
-                  {servingBubbles(task)}
+              <View style={styles.taskDetails}>
+                <View
+                  style={[
+                    styles.categoryBadge,
+                    getCategoryBadgeStyle(task.category),
+                  ]}
+                >
+                  <Text style={styles.categoryText}>{task.category}</Text>
                 </View>
+
+                {servingBubbles(task)}
+              </View>
             </View>
 
-            <TouchableOpacity 
+            <TouchableOpacity
               style={styles.deleteButton}
               onPress={() => deleteTask(task.id)}
             >
@@ -238,14 +238,14 @@ const HealthGoalsLog: React.FC = () => {
         <View style={styles.modalOverlay}>
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>Add New Health Goal</Text>
-            
+
             <TextInput
               style={styles.input}
               placeholder="Enter your health goal"
               value={newTaskTitle}
               onChangeText={setNewTaskTitle}
             />
-            
+
             <Text style={styles.labelText}>Category:</Text>
             <View style={styles.categoryContainer}>
               {["Nutrition", "Hydration"].map((category) => (
@@ -262,7 +262,7 @@ const HealthGoalsLog: React.FC = () => {
                 </TouchableOpacity>
               ))}
             </View>
-            
+
             <Text style={styles.labelText}>Servings:</Text>
             <TextInput
               style={styles.input}
@@ -278,7 +278,7 @@ const HealthGoalsLog: React.FC = () => {
               >
                 <Text style={styles.buttonText}>Cancel</Text>
               </TouchableOpacity>
-              
+
               <TouchableOpacity
                 style={[styles.modalButton, styles.saveButton]}
                 onPress={addTask}
