@@ -187,6 +187,30 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
   },
+  taskDetails: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+    marginTop: 5,
+  },
+  servingBubbleContainer: {
+    flexDirection: 'row',
+    marginLeft: 10,
+    alignItems: 'center',
+  },
+  servingBubbles: {
+    width: 12,
+    height: 12,
+    borderRadius: 6,
+    backgroundColor: '#fff',
+    borderWidth: 1,
+    borderColor: '#888',
+    marginRight: 5,
+  },
+  completedServings: {
+    backgroundColor: '#4CAF50',
+    borderColor: '#388E3C',
+  },
 });
 
 export default styles;

@@ -16,6 +16,8 @@ interface Task {
   title: string;
   completed: boolean;
   category: string;
+  serving: number;
+  completedServings:number;
 }
 
 const HealthGoalsLog: React.FC = () => {
@@ -25,24 +27,32 @@ const HealthGoalsLog: React.FC = () => {
       title: "Eat 3 servings of fruits",
       completed: true,
       category: "Nutrition",
+      serving: 3,
+      completedServings:3,
+
     },
     {
       id: "2",
       title: "Eat 3 servings of vegetables",
       completed: true,
       category: "Nutrition",
+      serving:3,
+      completedServings:2,
     },
     {
       id: "3",
       title: "Drink 8 glasses of water",
       completed: false,
       category: "Hydration",
+      serving: 8,
+      completedServings:4,
     }
   ]);
 
   const [modalVisible, setModalVisible] = useState(false);
   const [newTaskTitle, setNewTaskTitle] = useState("");
   const [newTaskCategory, setNewTaskCategory] = useState("Nutrition");
+  const [newServings, setServings] = useState("1");
   const [completedCount, setCompletedCount] = useState(0);
 
   const currentDate = new Date();
@@ -62,23 +72,53 @@ const HealthGoalsLog: React.FC = () => {
   const toggleTaskCompletion = (id: string) => {
     setTasks(
       tasks.map(task =>
-        task.id === id ? { ...task, completed: !task.completed } : task
+        task.id === id ? { ...task, completed: !task.completed, completedServings:task.completed ? 0: task.serving} : task
       )
+    );
+  };
+
+  const toggleServing= (taskId:String,servingIndex: number)=>{
+    setTasks(tasks.map(task => {
+      if (task.id === taskId){
+        let newCompletedServings =0;
+
+        if (servingIndex< task.completedServings){
+          newCompletedServings=servingIndex;
+        }else{
+          newCompletedServings=servingIndex+1;
+        }
+          const allComplete = newCompletedServings === task.serving;
+
+          return {
+            ...task,
+            completedServings:newCompletedServings,
+            completed: allComplete
+          };
+      }
+      return task;
+    }
+    )
     );
   };
 
   const addTask = () => {
     if (newTaskTitle.trim() === "") return;
     
+    const servingsNumber = parseInt(newServings) || 1;
+
     const newTask: Task = {
       id: Date.now().toString(),
       title: newTaskTitle,
       completed: false,
       category: newTaskCategory,
+      serving: servingsNumber,
+      completedServings:0,
+
     };
     
     setTasks([...tasks, newTask]);
     setNewTaskTitle("");
+    setServings("1");
     setModalVisible(false);
   };
 
@@ -87,14 +127,38 @@ const HealthGoalsLog: React.FC = () => {
   };
 
   const categoryColors: Record<string, string> = {
-    "Nutrition": "#8B4513", 
-    "Hydration": "#1E90FF"
+    "Nutrition": "#E640AB", 
+    "Hydration": "#372FE5"
   };
 
   const getCategoryBadgeStyle = (category: string) => {
     return {
       backgroundColor: categoryColors[category] || "#6A5ACD",
     };
+  };
+
+  const servingBubbles= (task: Task) => {
+    const bubbles = [];
+
+    for (let i=0; i< task.serving ; i++){
+      const isCompleted = i < task.completedServings;
+
+        bubbles.push(
+        <TouchableOpacity
+        key={`${task.id}-serving-${i}`}
+        style = {[
+          styles.servingBubbles,
+          isCompleted && styles.completedServings
+        ]}
+        onPress={() => toggleServing(task.id,i)}
+        />
+      );
+    }
+    return (
+      <View style = {styles.servingBubbleContainer}>
+        {bubbles}
+      </View>
+    )
   };
 
   return (
@@ -137,9 +201,14 @@ const HealthGoalsLog: React.FC = () => {
                 {task.title}
               </Text>
               
-              <View style={[styles.categoryBadge, getCategoryBadgeStyle(task.category)]}>
-                <Text style={styles.categoryText}>{task.category}</Text>
-              </View>
+                <View style ={styles.taskDetails}>
+
+                  <View style={[styles.categoryBadge, getCategoryBadgeStyle(task.category)]}>
+                    <Text style={styles.categoryText}>{task.category}</Text>
+                  </View>
+
+                  {servingBubbles(task)}
+                </View>
             </View>
 
             <TouchableOpacity 
@@ -194,6 +263,14 @@ const HealthGoalsLog: React.FC = () => {
               ))}
             </View>
             
+            <Text style={styles.labelText}>Servings:</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="Number of servings"
+              value={newServings}
+              onChangeText={setServings}
+            />
+
             <View style={styles.modalButtons}>
               <TouchableOpacity
                 style={[styles.modalButton, styles.cancelButton]}
