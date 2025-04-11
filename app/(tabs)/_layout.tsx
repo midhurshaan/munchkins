@@ -1,7 +1,7 @@
 import React from "react";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { Link, Tabs } from "expo-router";
-import { Pressable } from "react-native";
+import { Pressable, Image } from "react-native";
 
 import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
@@ -38,11 +38,17 @@ export default function TabLayout() {
             <Link href="/modal" asChild>
               <Pressable>
                 {({ pressed }) => (
-                  <FontAwesome
-                    name="info-circle"
-                    size={25}
-                    color={Colors[colorScheme ?? "light"].text}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
+                  <Image
+                    source={require("../../assets/images/munchie.png")}
+                    style={[
+                      {
+                        width: 125,
+                        height: 125,
+                        marginRight: -10,
+                        marginBottom: 10,
+                        opacity: pressed ? 0.5 : 1,
+                      },
+                    ]}
                   />
                 )}
               </Pressable>
