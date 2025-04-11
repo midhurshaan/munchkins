@@ -269,7 +269,6 @@ const HealthGoalsLog: React.FC = () => {
               placeholder="Number of servings"
               value={newServings}
               onChangeText={setServings}
-              keyboardType="numeric"
             />
 
             <View style={styles.modalButtons}>
