@@ -1,26 +1,18 @@
-import { Dimensions, StyleSheet, TouchableOpacity } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
 import { Text, View } from "@/components/Themed";
-import { useState } from "react";
 import { useAuth } from "../../services/AuthContext.js";
-import { router } from "expo-router";
 
 const { width, height } = Dimensions.get("window");
 
 export default function TabOneScreen() {
-  const { currentUser, isAuthenticated } = useAuth();
+  const { currentUser } = useAuth();
 
-  const goToLogin = () => {
-    router.push("/login");
-  };
+  const userName = currentUser?.displayName || "Friend";
 
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
-        <Text style={styles.title}>Welcome User!</Text>
-
-        <TouchableOpacity style={styles.loginButton} onPress={goToLogin}>
-          <Text style={styles.loginButtonText}>Login / Register</Text>
-        </TouchableOpacity>
+        <Text style={styles.title}>Welcome {userName}!</Text>
       </View>
 
       <View style={styles.summaryView}>
@@ -38,18 +30,6 @@ export default function TabOneScreen() {
 }
 
 const styles = StyleSheet.create({
-  loginButton: {
-    backgroundColor: "#654597",
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 10,
-    marginTop: 10,
-  },
-  loginButtonText: {
-    color: "white",
-    fontWeight: "bold",
-    fontSize: 16,
-  },
   container: {
     flex: 1,
     alignItems: "center",
@@ -82,7 +62,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
   },
-
   outerRing: {
     width: 130,
     height: 130,

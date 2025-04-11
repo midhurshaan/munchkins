@@ -42,10 +42,10 @@ export default function TabLayout() {
                     source={require("../../assets/images/munchie.png")}
                     style={[
                       {
-                        width: 125,
-                        height: 125,
-                        marginRight: -10,
-                        marginBottom: 10,
+                        width: 40,
+                        height: 40,
+                        marginRight: 20,
+                        marginBottom: -10,
                         opacity: pressed ? 0.5 : 1,
                       },
                     ]}

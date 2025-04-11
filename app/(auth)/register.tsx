@@ -10,6 +10,7 @@ import {
   Alert,
   KeyboardAvoidingView,
   Platform,
+  Image,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
@@ -120,13 +121,13 @@ const Register = () => {
         <ScrollView contentContainerStyle={loginStyles.contentContainer}>
           <View style={loginStyles.logoContainer}>
             <View style={loginStyles.circleLogo}>
-              <Ionicons
-                name="leaf-outline"
-                size={50}
-                style={loginStyles.logoIcon}
+              <Image
+                source={require("../../assets/images/munchie.png")}
+                style={{ width: 80, height: 80 }}
+                resizeMode="contain"
               />
             </View>
-            <Text style={loginStyles.logoText}>Health Tracker</Text>
+            <Text style={loginStyles.logoText}>Munchkins</Text>
             <Text style={loginStyles.logoSubtitle}>Create your account</Text>
           </View>
 

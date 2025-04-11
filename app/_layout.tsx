@@ -23,11 +23,7 @@ function RootLayoutNav() {
       console.log("NAVIGATION DEBUG - Current segments:", segments);
       console.log("NAVIGATION DEBUG - Is authenticated:", isAuthenticated);
       const currentRoute = segments[0];
-
-      // Check if we're in an auth screen based on the segment path
       const isInAuthGroup = segments[0] === "(auth)";
-
-      // Check for specific auth screens if needed
       const isAuthScreen =
         isInAuthGroup ||
         segments.join("/").includes("login") ||
