@@ -167,7 +167,7 @@ const HealthGoalsLog: React.FC = () => {
       <View style={styles.dateContainer}>
         <Text style={styles.dateText}>{formattedDate}</Text>
         <Text style={styles.taskCount}>
-          {completedCount}/{tasks.length} Tasks Completed
+          {completedCount}/{tasks.length} Goals Completed
         </Text>
       </View>
 
@@ -226,7 +226,7 @@ const HealthGoalsLog: React.FC = () => {
         onPress={() => setModalVisible(true)}
       >
         <Ionicons name="add" size={24} color="white" />
-        <Text style={styles.addButtonText}>Add Task</Text>
+        <Text style={styles.addButtonText}>Add a New Goal</Text>
       </TouchableOpacity>
 
       <Modal
