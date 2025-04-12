@@ -39,10 +39,10 @@ export default function TabLayout() {
                     source={require("../../assets/images/info.png")}
                     style={[
                       {
-                        width: 35,
-                        height: 35,
+                        width: 28,
+                        height: 28,
                         marginRight: 20,
-                        marginBottom: -10,
+                        marginBottom: 1,
                         opacity: pressed ? 0.5 : 1,
                       },
                     ]}

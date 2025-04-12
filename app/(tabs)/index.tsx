@@ -13,17 +13,15 @@ export default function TabOneScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
-        <Text style={styles.title}>Welcome {userName}!</Text>
+        <Text style={styles.title}>Welcome, {userName}!</Text>
       </View>
 
       <View style={styles.summaryView}>
         <View style={styles.outerRing}>
-          <Text style={styles.text}>83 points</Text>
+          <Text style={styles.text}>60 points</Text>
         </View>
         <View>
-          <Text style={styles.pointsInfo}>+ 50 from vegetables</Text>
-          <Text style={styles.pointsInfo}>+ 23 from fruits</Text>
-          <Text style={styles.pointsInfo}>+ 10 from protein</Text>
+          <Text style={styles.pointsInfo}>+ 5 from Fruits</Text>
         </View>
       </View>
 
@@ -34,14 +32,14 @@ export default function TabOneScreen() {
             <View style={styles.badgeCircle}>
               <Ionicons name="star" size={24} color="#FFD700" />
             </View>
-            <Text style={styles.badgeText}>Super Veggie Streak!</Text>
+            <Text style={styles.badgeText}>Early Achiever Award!</Text>
           </View>
 
           <View style={[styles.badgeItem, { marginTop: 20 }]}>
             <View style={styles.badgeCircle}>
               <Ionicons name="trophy" size={24} color="#FF6B00" />
             </View>
-            <Text style={styles.badgeText}>1 Week Streak!</Text>
+            <Text style={styles.badgeText}>New Streak Unlocked!</Text>
           </View>
         </View>
       </View>

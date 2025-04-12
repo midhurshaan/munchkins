@@ -16,16 +16,17 @@ interface StatisticsProps {
 
 const Statistics: React.FC<StatisticsProps> = ({ navigation }) => {
   const weekdayData = [
-    { value: 95, label: "Mo", frontColor: "#654597" },
+    { value: 90, label: "Mo", frontColor: "#654597" },
     { value: 70, label: "Tu", frontColor: "#654597" },
-    { value: 60, label: "We", frontColor: "#654597" },
-    { value: 75, label: "Th", frontColor: "#654597" },
+    { value: 100, label: "We", frontColor: "#654597" },
+    { value: 100, label: "Th", frontColor: "#654597" },
     { value: 100, label: "Fr", frontColor: "#654597" },
-    { value: 82, label: "Sa", frontColor: "#654597" },
-    { value: 93, label: "Su", frontColor: "#654597" },
+    { value: 0, label: "Sa", frontColor: "#654597" },
+    { value: 0, label: "Su", frontColor: "#654597" },
+    { value: 0, label: "Mo", frontColor: "#654597" },
   ];
 
-  const streakDays = 9;
+  const streakDays = 3;
 
   return (
     <SafeAreaView style={statisticStyles.container}>
@@ -67,20 +68,19 @@ const Statistics: React.FC<StatisticsProps> = ({ navigation }) => {
             </Text>
           </View>
         </View>
-
         <View style={statisticStyles.detailsContainer}>
           <Text style={statisticStyles.sectionTitle}>
             Details for this Month:
           </Text>
           <View style={statisticStyles.detailsContent}>
             <Text style={statisticStyles.detailText}>
-              Veggie Adherence: 76.7%
+              Veggie Adherence: 100%
             </Text>
             <Text style={statisticStyles.detailText}>
-              Fruit Adherence: 16.6%
+              Fruit Adherence: 100%
             </Text>
             <Text style={statisticStyles.detailText}>
-              Protein Adherence: 36.7%
+              Water Adherence: 100%
             </Text>
           </View>
         </View>

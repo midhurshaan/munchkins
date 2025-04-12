@@ -33,7 +33,7 @@ const HealthGoalsLog: React.FC = () => {
     {
       id: "2",
       title: "Eat 3 servings of vegetables",
-      completed: true,
+      completed: false,
       category: "Nutrition",
       serving: 3,
       completedServings: 2,
