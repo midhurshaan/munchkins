@@ -37,9 +37,9 @@ function RootLayoutNav() {
       );
 
       if (!isAuthenticated && !isAuthScreen) {
-        router.replace("/(auth)/login");
+        router.push("/(auth)/login");
       } else if (isAuthenticated && isAuthScreen) {
-        router.replace("/(tabs)");
+        router.push("/(tabs)");
       }
     }
   }, [isAuthenticated, segments]);
