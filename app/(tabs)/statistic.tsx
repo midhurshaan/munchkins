@@ -16,16 +16,16 @@ interface StatisticsProps {
 
 const Statistics: React.FC<StatisticsProps> = ({ navigation }) => {
   const weekdayData = [
-    { value: 95, label: "Mo", frontColor: '#654597' },
-    { value: 70, label: "Tu", frontColor: '#654597' },
-    { value: 60, label: "We", frontColor: '#654597'},
-    { value: 75, label: "Th", frontColor: '#654597' },
-    { value: 100, label: "Fr", frontColor: '#654597'},
-    { value: 82, label: "Sa", frontColor: '#654597' },
-    { value: 93, label: "Su", frontColor: '#654597'},
+    { value: 95, label: "Mo", frontColor: "#654597" },
+    { value: 70, label: "Tu", frontColor: "#654597" },
+    { value: 60, label: "We", frontColor: "#654597" },
+    { value: 75, label: "Th", frontColor: "#654597" },
+    { value: 100, label: "Fr", frontColor: "#654597" },
+    { value: 82, label: "Sa", frontColor: "#654597" },
+    { value: 93, label: "Su", frontColor: "#654597" },
   ];
 
-  const streakDays = 4;
+  const streakDays = 9;
 
   return (
     <SafeAreaView style={statisticStyles.container}>
@@ -40,9 +40,18 @@ const Statistics: React.FC<StatisticsProps> = ({ navigation }) => {
         <View style={statisticStyles.sectionContainer}>
           <Text style={statisticStyles.sectionTitle}>Adherence Rate (%)</Text>
           <View style={statisticStyles.chartContainer}>
-
             <View style={statisticStyles.barChartContainer}>
-              <BarChart data={weekdayData} width={300} height={150} barBorderTopLeftRadius={6} barBorderTopRightRadius={6} maxValue={100} stepValue={50} noOfSections={2} spacing={12} />
+              <BarChart
+                data={weekdayData}
+                width={300}
+                height={150}
+                barBorderTopLeftRadius={6}
+                barBorderTopRightRadius={6}
+                maxValue={100}
+                stepValue={50}
+                noOfSections={2}
+                spacing={12}
+              />
             </View>
           </View>
         </View>
@@ -61,17 +70,17 @@ const Statistics: React.FC<StatisticsProps> = ({ navigation }) => {
 
         <View style={statisticStyles.detailsContainer}>
           <Text style={statisticStyles.sectionTitle}>
-            Details for this Month
+            Details for this Month:
           </Text>
           <View style={statisticStyles.detailsContent}>
             <Text style={statisticStyles.detailText}>
-              Veggie adherence: 46.7%
+              Veggie Adherence: 76.7%
             </Text>
             <Text style={statisticStyles.detailText}>
-              fruit adherence: 16.6%
+              Fruit Adherence: 16.6%
             </Text>
             <Text style={statisticStyles.detailText}>
-              protein adherence: 36.7%
+              Protein Adherence: 36.7%
             </Text>
           </View>
         </View>
