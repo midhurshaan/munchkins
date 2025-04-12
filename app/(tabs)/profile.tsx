@@ -7,6 +7,7 @@ import {
   SafeAreaView,
   ScrollView,
   Alert,
+  Image,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import profileStyles from "../styles/profileStyles";
@@ -27,11 +28,11 @@ interface ProfileData {
 const Profile: React.FC<ProfileProps> = ({ navigation }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [profileData, setProfileData] = useState<ProfileData>({
-    name: "John Wick",
-    email: "johnwickboom@gmail.com",
-    age: "21 years old",
-    weight: "182 lb",
-    height: "185 cm",
+    name: "Annabel Zecchel",
+    email: "zecchelannabel@gmail.com",
+    age: "22 years old",
+    weight: "130 lb",
+    height: "160 cm",
     address: "8845 Lincoln Rd, Montreal, Quebec, R9K 3L2",
   });
 
@@ -72,7 +73,10 @@ const Profile: React.FC<ProfileProps> = ({ navigation }) => {
 
         <View style={profileStyles.editButtonContainer}>
           <TouchableOpacity
-            style={[profileStyles.editButton, isEditing && profileStyles.saveButton]}
+            style={[
+              profileStyles.editButton,
+              isEditing && profileStyles.saveButton,
+            ]}
             onPress={handleEdit}
           >
             <Text style={profileStyles.editButtonText}>
@@ -92,7 +96,10 @@ const Profile: React.FC<ProfileProps> = ({ navigation }) => {
 
         <View style={profileStyles.profileImageContainer}>
           <View style={profileStyles.avatarContainer}>
-            <Ionicons name="person" size={50} color="#333" />
+            <Image
+              source={require("@/assets/images/girl.jpg")}
+              style={{ width: 80, height: 80, borderRadius: 40 }}
+            />
           </View>
           {isEditing ? (
             <TextInput
@@ -109,7 +116,10 @@ const Profile: React.FC<ProfileProps> = ({ navigation }) => {
         <View style={profileStyles.infoSection}>
           <Text style={profileStyles.label}>Email</Text>
           <TextInput
-            style={[profileStyles.input, isEditing && profileStyles.editableInput]}
+            style={[
+              profileStyles.input,
+              isEditing && profileStyles.editableInput,
+            ]}
             value={tempData.email}
             editable={isEditing}
             onChangeText={(value) => handleChange("email", value)}
@@ -117,7 +127,10 @@ const Profile: React.FC<ProfileProps> = ({ navigation }) => {
 
           <Text style={profileStyles.label}>Age</Text>
           <TextInput
-            style={[profileStyles.input, isEditing && profileStyles.editableInput]}
+            style={[
+              profileStyles.input,
+              isEditing && profileStyles.editableInput,
+            ]}
             value={tempData.age}
             editable={isEditing}
             onChangeText={(value) => handleChange("age", value)}
@@ -125,7 +138,10 @@ const Profile: React.FC<ProfileProps> = ({ navigation }) => {
 
           <Text style={profileStyles.label}>Weight</Text>
           <TextInput
-            style={[profileStyles.input, isEditing && profileStyles.editableInput]}
+            style={[
+              profileStyles.input,
+              isEditing && profileStyles.editableInput,
+            ]}
             value={tempData.weight}
             editable={isEditing}
             onChangeText={(value) => handleChange("weight", value)}
@@ -133,7 +149,10 @@ const Profile: React.FC<ProfileProps> = ({ navigation }) => {
 
           <Text style={profileStyles.label}>Height</Text>
           <TextInput
-            style={[profileStyles.input, isEditing && profileStyles.editableInput]}
+            style={[
+              profileStyles.input,
+              isEditing && profileStyles.editableInput,
+            ]}
             value={tempData.height}
             editable={isEditing}
             onChangeText={(value) => handleChange("height", value)}
@@ -141,7 +160,10 @@ const Profile: React.FC<ProfileProps> = ({ navigation }) => {
 
           <Text style={profileStyles.label}>Address</Text>
           <TextInput
-            style={[profileStyles.input, isEditing && profileStyles.editableInput]}
+            style={[
+              profileStyles.input,
+              isEditing && profileStyles.editableInput,
+            ]}
             value={tempData.address}
             editable={isEditing}
             multiline
@@ -152,7 +174,5 @@ const Profile: React.FC<ProfileProps> = ({ navigation }) => {
     </SafeAreaView>
   );
 };
-
-
 
 export default Profile;

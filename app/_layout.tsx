@@ -45,14 +45,10 @@ function RootLayoutNav() {
   }, [isAuthenticated, segments]);
 
   return (
-
-    <Stack screenOptions={{ headerShown: true }}>
-      <Stack.Screen name="login" options={{ headerShown: false, headerTitle: "Login", }}/>
-      <Stack.Screen name="register" />
+    <Stack>
+      <Stack.Screen name="modal" options={{ presentation: "modal" }} />
     </Stack>
-
   );
-  
 }
 
 export default function RootLayout() {

@@ -1,6 +1,7 @@
 import { Dimensions, StyleSheet } from "react-native";
 import { Text, View } from "@/components/Themed";
 import { useAuth } from "../../services/AuthContext.js";
+import { Ionicons } from "@expo/vector-icons";
 
 const { width, height } = Dimensions.get("window");
 
@@ -17,12 +18,31 @@ export default function TabOneScreen() {
 
       <View style={styles.summaryView}>
         <View style={styles.outerRing}>
-          <Text style={styles.text}>53 points</Text>
+          <Text style={styles.text}>83 points</Text>
         </View>
         <View>
-          <Text style={styles.pointsInfo}>+ 20 from vegetables</Text>
+          <Text style={styles.pointsInfo}>+ 50 from vegetables</Text>
           <Text style={styles.pointsInfo}>+ 23 from fruits</Text>
           <Text style={styles.pointsInfo}>+ 10 from protein</Text>
+        </View>
+      </View>
+
+      <View style={styles.badgesContainer}>
+        <Text style={styles.badgesTitle}>Badges</Text>
+        <View style={styles.badgesList}>
+          <View style={styles.badgeItem}>
+            <View style={styles.badgeCircle}>
+              <Ionicons name="star" size={24} color="#FFD700" />
+            </View>
+            <Text style={styles.badgeText}>Super Veggie Streak!</Text>
+          </View>
+
+          <View style={[styles.badgeItem, { marginTop: 20 }]}>
+            <View style={styles.badgeCircle}>
+              <Ionicons name="trophy" size={24} color="#FF6B00" />
+            </View>
+            <Text style={styles.badgeText}>1 Week Streak!</Text>
+          </View>
         </View>
       </View>
     </View>
@@ -85,5 +105,45 @@ const styles = StyleSheet.create({
   pointsInfo: {
     fontSize: 15,
     fontWeight: "bold",
+  },
+  badgesContainer: {
+    backgroundColor: "white",
+    width: width * 0.9,
+    borderRadius: 20,
+    padding: 20,
+    marginTop: 20,
+    shadowColor: "#000",
+    shadowOpacity: 0.1,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 4,
+    elevation: 3,
+  },
+  badgesTitle: {
+    fontSize: 18,
+    fontWeight: "bold",
+    marginBottom: 15,
+  },
+  badgesList: {
+    width: "100%",
+  },
+  badgeItem: {
+    flexDirection: "row",
+    alignItems: "center",
+    padding: 10,
+    borderRadius: 15,
+    backgroundColor: "#F5F5F5",
+  },
+  badgeCircle: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: "#EFEFEF",
+    justifyContent: "center",
+    alignItems: "center",
+    marginRight: 15,
+  },
+  badgeText: {
+    fontSize: 16,
+    fontWeight: "500",
   },
 });

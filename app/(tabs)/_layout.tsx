@@ -7,7 +7,6 @@ import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
 import { useClientOnlyValue } from "@/components/useClientOnlyValue";
 
-// You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 function TabBarIcon(props: {
   name: React.ComponentProps<typeof FontAwesome>["name"];
   color: string;
@@ -22,8 +21,6 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
-        // Disable the static render of the header on web
-        // to prevent a hydration error in React Navigation v6.
         headerShown: useClientOnlyValue(false, true),
       }}
     >
@@ -32,18 +29,18 @@ export default function TabLayout() {
         options={{
           title: "Home",
           tabBarIcon: ({ color }: { color: string }) => (
-            <TabBarIcon name="code" color={color} />
+            <TabBarIcon name="home" color={color} />
           ),
           headerRight: () => (
             <Link href="/modal" asChild>
               <Pressable>
                 {({ pressed }) => (
                   <Image
-                    source={require("../../assets/images/munchie.png")}
+                    source={require("../../assets/images/info.png")}
                     style={[
                       {
-                        width: 40,
-                        height: 40,
+                        width: 35,
+                        height: 35,
                         marginRight: 20,
                         marginBottom: -10,
                         opacity: pressed ? 0.5 : 1,
@@ -61,7 +58,25 @@ export default function TabLayout() {
         options={{
           title: "Log",
           tabBarIcon: ({ color }: { color: string }) => (
-            <TabBarIcon name="code" color={color} />
+            <TabBarIcon name="book" color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="profile"
+        options={{
+          title: "Profile",
+          tabBarIcon: ({ color }: { color: string }) => (
+            <TabBarIcon name="user" color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="statistic"
+        options={{
+          title: "Statistic",
+          tabBarIcon: ({ color }: { color: string }) => (
+            <TabBarIcon name="bar-chart" color={color} />
           ),
         }}
       />
